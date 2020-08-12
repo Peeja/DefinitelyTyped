@@ -27,11 +27,13 @@ const invisibleParams2: ReCaptchaV2.Parameters = {
   badge: badge2,
 };
 
+declare var foo: HTMLElement;
+
 const id1: number = grecaptcha.render("foo");
 const id2: number = grecaptcha.render("foo", params);
-const id3: number = grecaptcha.render(document.getElementById("foo"));
-const id4: number = grecaptcha.render(document.getElementById("foo"), params);
-const id5: number = grecaptcha.render(document.getElementById("foo"), params, true);
+const id3: number = grecaptcha.render(foo);
+const id4: number = grecaptcha.render(foo, params);
+const id5: number = grecaptcha.render(foo, params, true);
 
 // response takes a number and returns a string
 const response1: string = grecaptcha.getResponse(id1);
