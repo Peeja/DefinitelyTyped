@@ -29,6 +29,9 @@ const invisibleParams2: ReCaptchaV2.Parameters = {
 
 declare var foo: HTMLElement;
 
+// $ExpectError
+grecaptcha.render('foo');
+
 if (grecaptcha !== undefined) {
     const id1: number = grecaptcha.render('foo');
     const id2: number = grecaptcha.render('foo', params);
