@@ -29,24 +29,26 @@ const invisibleParams2: ReCaptchaV2.Parameters = {
 
 declare var foo: HTMLElement;
 
-const id1: number = grecaptcha.render("foo");
-const id2: number = grecaptcha.render("foo", params);
-const id3: number = grecaptcha.render(foo);
-const id4: number = grecaptcha.render(foo, params);
-const id5: number = grecaptcha.render(foo, params, true);
+if (grecaptcha !== undefined) {
+  const id1: number = grecaptcha.render("foo");
+  const id2: number = grecaptcha.render("foo", params);
+  const id3: number = grecaptcha.render(foo);
+  const id4: number = grecaptcha.render(foo, params);
+  const id5: number = grecaptcha.render(foo, params, true);
 
-// response takes a number and returns a string
-const response1: string = grecaptcha.getResponse(id1);
+  // response takes a number and returns a string
+  const response1: string = grecaptcha.getResponse(id1);
 
-// reset takes a number
-grecaptcha.reset(id1);
+  // reset takes a number
+  grecaptcha.reset(id1);
 
-grecaptcha.execute();
-grecaptcha.execute(id1);
+  grecaptcha.execute();
+  grecaptcha.execute(id1);
 
-grecaptcha.execute('foo', { action: 'bar' }).then((token: string) => {});
+  grecaptcha.execute('foo', { action: 'bar' }).then((token: string) => {});
 
-// $ExpectError
-grecaptcha.execute('foo', { action: 'bar' }).catch(() => {});
+  // $ExpectError
+  grecaptcha.execute('foo', { action: 'bar' }).catch(() => {});
 
-grecaptcha.ready(() => {});
+  grecaptcha.ready(() => {});
+}
